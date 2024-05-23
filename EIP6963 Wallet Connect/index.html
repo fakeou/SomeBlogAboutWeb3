@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let walletList = [];
+      const getWalletList = (event) => {
+        console.log(event);
+        walletList.push(event.detail);
+      };
+      window.addEventListener("eip6963:announceProvider", getWalletList);
+      window.dispatchEvent(new Event("eip6963:requestProvider"));
+
+      const openWallet = (e, index) => {
+        e.style.color = "blue";
+        walletList[index].provider.request({
+          method: "eth_requestAccounts",
+        });
+      };
+    </script>
+    <div onclick="openWallet(this,0)">第一个可用钱包</div>
+    <div onclick="openWallet(this,1)">第二个可用钱包</div>
+  </body>
+</html>
