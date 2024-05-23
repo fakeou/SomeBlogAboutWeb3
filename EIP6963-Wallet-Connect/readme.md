@@ -8,7 +8,7 @@ EIP6963 是插件钱包规范，用于解决多个钱包之间注入全局变量
 
 如上：我添加了两个硬件钱包，当调用 window.ethereum 试图唤起 metaMask 时，被 okxWallet 询问打开实例
 
-![Wallet Plugin](./img/okx-quest.png)
+![Wallet Plugin](./img/okxQuest.png)
 
 这是我们不想看到的，我们希望能够直接打开 metaMask，对此需要使用 EIP6963 实现区分钱包及其实例（provider）。
 
@@ -42,7 +42,7 @@ const openWallet = (index) => {
 
 ### Even 返回数据如下：
 
-![Event Detail Data](./img/event.detail.png)
+![Event Detail Data](./img/eventDetail.png)
 
 可以看到 info 中包含钱包的基本信息，provider 与传统的 window.ethereum 类似，应该可以使用 Ethers 的 BrowserProvider 接管以方便操作插件钱包。
 
